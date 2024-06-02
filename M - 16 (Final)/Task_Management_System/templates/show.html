@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block contant1 %}
+<div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px;">
+  {% for data in tasks %}
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 style="font-weight: bold;"> ID : <span>{{data.id}}</span> </h5>
+      
+      <h5 class="card-title"> Date : {{data.Task_Assign_Date}}</h5>
+      <span style="font-weight: bold; font-size: 20px;">Description:</span>
+      <span class="card-title"> {{data.taskDescription}}</span>
+      <br>
+      <span style="font-weight: bold; font-size: 20px;">Categories:</span>
+      <span class="card-title">
+        {% for i in data.category.all %}
+        <button class="btn btn-primary btn-sm m-2"> {{i.Category_Name}} </button>
+        {% endfor %}
+      </span>
+      <br>
+
+      {% if not data.is_completed %}
+      <a href="{% url 'edit_task_page' data.id %}" class="btn btn-secondary">Edit</a>
+      <a href="{% url 'delete_task_page' data.id %}" class="btn btn-danger">Delete</a>
+      
+      {% else %}
+      <h4 style="font-weight: bold;">Completed</h4>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
