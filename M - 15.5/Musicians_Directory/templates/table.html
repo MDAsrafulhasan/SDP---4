@@ -25,7 +25,7 @@
 
           <tr>
             <th scope="row">{{data.id}}</th>
-            <td><a href="{% url 'edit_musician' data.id %}">{{data.musicians.First_Name}} {{data.musicians.Last_Name}}</a></td>
+            <td><a href="{% url 'edit_musician' data.musicians.id %}">{{data.musicians.First_Name}} {{data.musicians.Last_Name}}</a></td>
             <td>{{data.musicians.Email}}</td>
             <td>{{data.rating}}</td>
             <td>{{data.musicians.Instrument_Type}}</td>
